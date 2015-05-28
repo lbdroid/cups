@@ -559,13 +559,13 @@ LOCAL_MODULE_TAGS := optional
 include $(BUILD_SHARED_LIBRARY)
 
 # admin.cgi
-#include $(CLEAR_VARS)
-#LOCAL_SRC_FILES:= cgi-bin/admin.c
-#LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-#LOCAL_SHARED_LIBRARIES += libcups libcupscgi
-#LOCAL_MODULE := admin.cgi
-#LOCAL_MODULE_TAGS := optional
-#include $(BUILD_EXECUTABLE)
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES:= cgi-bin/admin.c
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
+LOCAL_SHARED_LIBRARIES += libcups libcupscgi
+LOCAL_MODULE := admin.cgi
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_EXECUTABLE)
 
 # classes.cgi
 include $(CLEAR_VARS)

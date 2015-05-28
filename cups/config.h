@@ -247,6 +247,8 @@
 
 #undef HAVE_SNPRINTF
 #undef HAVE_VSNPRINTF
+#define HAVE_SNPRINTF 1
+#define HAVE_VSNPRINTF 1
 
 
 /*
@@ -696,7 +698,6 @@
  */
 
 #undef HAVE_MXML_H
-
 
 /*
  * Do we have the C99 abs() function?

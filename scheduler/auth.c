@@ -62,7 +62,6 @@ typedef struct sockpeercred cupsd_ucred_t;
 #  define CUPSD_UCRED_UID(c) (c).uid
 #endif /* HAVE_SYS_UCRED_H */
 
-
 /*
  * Local functions...
  */
@@ -2101,7 +2100,11 @@ static char *				/* O - Encrypted password */
 cups_crypt(const char *pw,		/* I - Password string */
            const char *salt)		/* I - Salt (key) string */
 {
-  if (!strncmp(salt, "$1$", 3))
+  int havecrypt=1;
+#ifdef __ANDROID__
+  havecrypt=0;
+#endif
+  if (!havecrypt || !strncmp(salt, "$1$", 3))
   {
    /*
     * Use MD5 passwords without the benefit of PAM; this is for
@@ -2202,6 +2205,7 @@ cups_crypt(const char *pw,		/* I - Password string */
 
     return (result);
   }
+#ifndef __ANDROID__
   else
   {
    /*
@@ -2210,6 +2214,9 @@ cups_crypt(const char *pw,		/* I - Password string */
 
     return (crypt(pw, salt));
   }
+#else
+  return "";
+#endif
 }
 #endif /* !HAVE_LIBPAM */
 

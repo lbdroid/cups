@@ -695,6 +695,9 @@ typedef int (*ipp_copycb_t)(void *context, ipp_t *dst, ipp_attribute_t *attr);
  * from being exposed.  This is useful when migrating existing code to the new
  * accessors.
  */
+#ifdef __ANDROID__
+#define _IPP_PRIVATE_STRUCTURES 1
+#endif
 
 #  ifdef _IPP_PRIVATE_STRUCTURES
      /* Somebody has overridden the value */

@@ -27,6 +27,9 @@
 #  include <paper.h>
 #endif /* HAVE_LIBPAPER */
 
+#ifdef __ANDROID__
+void endgrent() {}
+#endif
 
 /*
  * Possibly missing network definitions...
