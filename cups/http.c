@@ -69,6 +69,9 @@ static void		http_set_wait(http_t *http);
 
 #ifdef HAVE_SSL
 static int		http_tls_upgrade(http_t *http);
+#  ifdef HAVE_LIBSSL
+#    include "tls-openssl.c"
+#  endif /* HAVE_LIBSSL */
 #endif /* HAVE_SSL */
 
 
@@ -1129,7 +1132,13 @@ httpGetReady(http_t *http)		/* I - HTTP connection */
     return ((size_t)http->used);
 #ifdef HAVE_SSL
   else if (http->tls)
+#ifdef HAVE_LIBSSL
+    size_t      ready;                  /* Ready bytes */
+    if ((ready = SSL_pending((SSL *)(http->tls))) > 0)
+      return (ready);
+#else
     return (_httpTLSPending(http));
+#endif /* HAVE_LIBSSL */
 #endif /* HAVE_SSL */
 
   return (0);
@@ -1534,6 +1543,10 @@ httpInitialize(void)
 #ifdef WIN32
   WSADATA	winsockdata;		/* WinSock data */
 #endif /* WIN32 */
+#ifdef HAVE_LIBSSL
+  int		i;			/* Looping var */
+  unsigned char	data[1024];		/* Seed data */
+#endif /* HAVE_LIBSSL */
 
 
   _cupsGlobalLock();

@@ -369,11 +369,13 @@ typedef unsigned long useconds_t;
 
 /* #undef HAVE_CDSASSL */
 /* #undef HAVE_GNUTLS */
+/* #undef HAVE_LIBSSL */
 #define HAVE_SSPISSL
 #define HAVE_SSL
 
 
 /*
+<<<<<<< HEAD
  * Do we have the gnutls_transport_set_pull_timeout_function function?
  */
 
@@ -385,6 +387,12 @@ typedef unsigned long useconds_t;
  */
 
 /* #undef HAVE_GNUTLS_PRIORITY_SET_DIRECT */
+
+/*
+ * Do we have the SSL_set_tlsext_host_name function?
+ */
+
+/* #undef HAVE_SSL_SET_TLSEXT_HOST_NAME */
 
 
 /*

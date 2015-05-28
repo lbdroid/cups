@@ -591,7 +591,7 @@ cupsdReadConfiguration(void)
   ClassifyOverride  = 0;
 
 #ifdef HAVE_SSL
-#  ifdef HAVE_GNUTLS
+#  if defined(HAVE_LIBSSL) || defined(HAVE_GNUTLS)
   cupsdSetString(&ServerKeychain, "ssl");
 #  else
   cupsdSetString(&ServerKeychain, "/Library/Keychains/System.keychain");

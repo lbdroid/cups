@@ -1,16 +1,16 @@
 #
 # "$Id$"
 #
-# Common makefile definitions for CUPS.
+#   Common makefile definitions for CUPS.
 #
 # Copyright 2007-2014 by Apple Inc.
 # Copyright 1997-2007 by Easy Software Products, all rights reserved.
 #
-# These coded instructions, statements, and computer programs are the
-# property of Apple Inc. and are protected by Federal copyright
-# law.  Distribution and use rights are outlined in the file "LICENSE.txt"
-# which should have been included with this file.  If this file is
-# file is missing or damaged, see the license at "http://www.cups.org/".
+#   These coded instructions, statements, and computer programs are the
+#   property of Apple Inc. and are protected by Federal copyright
+#   law.  Distribution and use rights are outlined in the file "LICENSE.txt"
+#   which should have been included with this file.  If this file is
+#   file is missing or damaged, see the license at "http://www.cups.org/".
 #
 
 #
@@ -143,7 +143,7 @@ IPPFIND_MAN	=	@IPPFIND_MAN@
 LDFLAGS		=	-L../cgi-bin -L../cups -L../filter -L../ppdc \
 			-L../scheduler @LDARCHFLAGS@ \
 			@LDFLAGS@ @RELROFLAGS@ @PIEFLAGS@ $(OPTIM)
-LINKCUPS	=	@LINKCUPS@ $(LIBGSSAPI) $(DNSSDLIBS) $(LIBZ)
+LINKCUPS	=	@LINKCUPS@ $(LIBGSSAPI) $(SSLLIBS) $(DNSSDLIBS) $(LIBZ)
 LINKCUPSIMAGE	=	@LINKCUPSIMAGE@
 LIBS		=	$(LINKCUPS) $(COMMONLIBS)
 ONDEMANDFLAGS	=	@ONDEMANDFLAGS@
