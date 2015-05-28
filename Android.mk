@@ -77,8 +77,9 @@ LOCAL_SRC_FILES:= \
 disabled_src_files:= \
 
 
-LOCAL_C_INCLUDES := cups
+LOCAL_C_INCLUDES := cups $(LOCAL_PATH)/../openssl/include
 LOCAL_CFLAGS := -D_PPD_DEPRECATED=
+LOCAL_SHARED_LIBRARIES += libssl
 LOCAL_MODULE := libcups
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz

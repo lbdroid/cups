@@ -296,7 +296,8 @@
 #undef HAVE_CDSASSL
 #undef HAVE_GNUTLS
 #undef HAVE_SSPISSL
-#undef HAVE_SSL
+#define HAVE_SSL 1
+#define HAVE_LIBSSL 1
 
 
 /*

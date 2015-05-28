@@ -1128,7 +1128,7 @@ httpGetReady(http_t *http)		/* I - HTTP connection */
   else if (http->used > 0)
     return ((size_t)http->used);
 #ifdef HAVE_SSL
-  else if (http->tls)
+  else if (http->tls){
 #ifdef HAVE_LIBSSL
     size_t      ready;                  /* Ready bytes */
     if ((ready = SSL_pending((SSL *)(http->tls))) > 0)
@@ -1136,6 +1136,7 @@ httpGetReady(http_t *http)		/* I - HTTP connection */
 #else
     return (_httpTLSPending(http));
 #endif /* HAVE_LIBSSL */
+  }
 #endif /* HAVE_SSL */
 
   return (0);
