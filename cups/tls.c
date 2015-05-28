@@ -42,7 +42,9 @@
  */
 
 #ifdef HAVE_SSL
-#  ifdef HAVE_GNUTLS
+#  ifdef HAVE_LIBSSL
+#    include "tls-openssl.c"
+#  elif HAVE_GNUTLS
 #    include "tls-gnutls.c"
 #  elif defined(HAVE_CDSASSL)
 #    include "tls-darwin.c"

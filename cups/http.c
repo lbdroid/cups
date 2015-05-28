@@ -69,9 +69,6 @@ static void		http_set_wait(http_t *http);
 
 #ifdef HAVE_SSL
 static int		http_tls_upgrade(http_t *http);
-#  ifdef HAVE_LIBSSL
-#    include "tls-openssl.c"
-#  endif /* HAVE_LIBSSL */
 #endif /* HAVE_SSL */
 
 
