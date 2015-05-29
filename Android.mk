@@ -547,7 +547,7 @@ LOCAL_SRC_FILES:= \
 	cgi-bin/ipp-var.c \
 	cgi-bin/search.c \
 	cgi-bin/template.c \
-	cgi-bin/var.c \	
+	cgi-bin/var.c \
 
 disabled_src_files:= \
 
