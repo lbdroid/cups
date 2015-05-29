@@ -1071,8 +1071,8 @@ cupsdReadConfiguration(void)
   if (ServerKeychain[0] != '/')
     cupsdSetStringf(&ServerKeychain, "%s/%s", ServerRoot, ServerKeychain);
 
-  cupsdLogMessage(CUPSD_LOG_DEBUG, "Using keychain \"%s\" for server name \"%s\".", ServerKeychain, ServerName);
-  cupsSetServerCredentials(ServerKeychain, ServerName, 1);
+  //cupsdLogMessage(CUPSD_LOG_DEBUG, "Using keychain \"%s\" for server name \"%s\".", ServerKeychain, ServerName);
+  //cupsSetServerCredentials(ServerKeychain, ServerName, 1);
 #endif /* HAVE_SSL */
 
  /*

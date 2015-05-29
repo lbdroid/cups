@@ -697,7 +697,7 @@ main(int  argc,				/* I - Number of command-line args */
 
     if (!httpCopyCredentials(http, &creds))
     {
-      trust = httpCredentialsGetTrust(creds, hostname);
+      /*trust = httpCredentialsGetTrust(creds, hostname);
 
       update_reasons(NULL, "-cups-pki-invalid,cups-pki-changed,cups-pki-expired,cups-pki-unknown");
       if (trusts[trust])
@@ -708,16 +708,17 @@ main(int  argc,				/* I - Number of command-line args */
 
       if (httpLoadCredentials(NULL, &lcreds, hostname))
       {
-       /*
+       / *
         * Could not load the credentials, let's save the ones we have so we
         * can detect changes...
-        */
+        * /
 
         httpSaveCredentials(NULL, creds, hostname);
       }
 
       httpFreeCredentials(lcreds);
       httpFreeCredentials(creds);
+      */
     }
   }
 

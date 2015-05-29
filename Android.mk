@@ -67,7 +67,6 @@ LOCAL_SRC_FILES:= \
 	cups/string.c \
 	cups/tempfile.c \
 	cups/thread.c \
-	cups/tls.c \
 	cups/transcode.c \
 	cups/usersys.c \
 	cups/util.c \
@@ -79,7 +78,7 @@ disabled_src_files:= \
 
 LOCAL_C_INCLUDES := cups $(LOCAL_PATH)/../openssl/include
 LOCAL_CFLAGS := -D_PPD_DEPRECATED=
-LOCAL_SHARED_LIBRARIES += libssl
+LOCAL_SHARED_LIBRARIES += libssl libcrypto
 LOCAL_MODULE := libcups
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -143,8 +142,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsmime
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsmime libssl libcrypto
 LOCAL_MODULE := cupsd
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -159,8 +158,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsmime
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsmime libssl libcrypto
 LOCAL_MODULE := cupsfilter
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -176,8 +175,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsmime
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsmime libssl libcrypto
 LOCAL_MODULE := cups-deviced
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -193,8 +192,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsppdc
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsppdc libssl libcrypto
 LOCAL_MODULE := cups-driverd
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -225,8 +224,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsmime
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsmime libssl libcrypto
 LOCAL_MODULE := cups-lpd
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -262,8 +261,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := libcupsppdc
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -278,8 +277,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsppdc
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsppdc libssl libcrypto
 LOCAL_MODULE := ppdc
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -294,8 +293,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsppdc
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsppdc libssl libcrypto
 LOCAL_MODULE := ppdhtml
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -310,8 +309,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsppdc
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsppdc libssl libcrypto
 LOCAL_MODULE := ppdi
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -326,8 +325,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsppdc
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsppdc libssl libcrypto
 LOCAL_MODULE := ppdmerge
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -342,8 +341,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsppdc
+LOCAL_C_INCLUDES := scheduler $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsppdc libssl libcrypto
 LOCAL_MODULE := ppdpo
 LOCAL_MODULE_TAGS := optional
 LOCAL_LDLIBS += -lz
@@ -357,8 +356,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/cancel.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := cancel
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -367,8 +366,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/cupsaccept.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := cupsaccept
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -377,8 +376,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/cupsaddsmb.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := cupsaddsmb
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -387,8 +386,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/cupsctl.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := cupsctl
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -397,8 +396,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/lp.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lp
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -407,8 +406,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/lpadmin.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lpadmin
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -417,8 +416,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/lpinfo.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lpinfo
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -427,8 +426,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/lpmove.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lpmove
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -437,8 +436,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/lpoptions.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lpoptions
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -447,8 +446,8 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= \
 	systemv/lpstat.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lpstat
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -466,8 +465,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := libcupsimage
 LOCAL_MODULE_TAGS := optional
 
@@ -475,9 +474,9 @@ include $(BUILD_SHARED_LIBRARY)
 
 # commandtops
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES:= filter/commandtops.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_SRC_FILES:= filter/commandtops.c 
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := commandtops
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -485,8 +484,8 @@ include $(BUILD_EXECUTABLE)
 # gziptoany
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= filter/gziptoany.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := gziptoany
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -494,8 +493,8 @@ include $(BUILD_EXECUTABLE)
 # pstops
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= filter/pstops.c filter/common.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := pstops
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -503,8 +502,8 @@ include $(BUILD_EXECUTABLE)
 # rastertoepson
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= filter/rastertoepson.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsimage
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsimage libssl libcrypto
 LOCAL_MODULE := rastertoepson
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -512,8 +511,8 @@ include $(BUILD_EXECUTABLE)
 # rastertohp
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= filter/rastertohp.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsimage
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsimage libssl libcrypto
 LOCAL_MODULE := rastertohp
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -521,8 +520,8 @@ include $(BUILD_EXECUTABLE)
 # rastertolabel
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= filter/rastertolabel.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsimage
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsimage libssl libcrypto
 LOCAL_MODULE := rastertolabel
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -530,8 +529,8 @@ include $(BUILD_EXECUTABLE)
 # rastertopwg
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= filter/rastertopwg.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups libcupsimage
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libcupsimage libssl libcrypto
 LOCAL_MODULE := rastertopwg
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -619,8 +618,8 @@ include $(BUILD_EXECUTABLE)
 # lpc
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= berkeley/lpc.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lpc
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -628,8 +627,8 @@ include $(BUILD_EXECUTABLE)
 # lpq
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= berkeley/lpq.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lpq
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -637,8 +636,8 @@ include $(BUILD_EXECUTABLE)
 # lpr
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= berkeley/lpr.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lpr
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -646,8 +645,8 @@ include $(BUILD_EXECUTABLE)
 # lprm
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= berkeley/lprm.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := lprm
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_EXECUTABLE)
@@ -666,8 +665,8 @@ LOCAL_SRC_FILES:= \
 
 disabled_src_files:= \
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_MODULE := libbackend
 LOCAL_MODULE_TAGS := optional
 
@@ -686,8 +685,8 @@ include $(BUILD_STATIC_LIBRARY)
 # ipp (requires cups/tls.h)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= backend/ipp.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_STATIC_LIBRARIES += libbackend
 LOCAL_MODULE := ipp
 LOCAL_MODULE_TAGS := optional
@@ -696,8 +695,8 @@ include $(BUILD_EXECUTABLE)
 # lpd
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= backend/lpd.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_STATIC_LIBRARIES += libbackend
 LOCAL_MODULE := lpd
 LOCAL_MODULE_TAGS := optional
@@ -706,8 +705,8 @@ include $(BUILD_EXECUTABLE)
 # snmp
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= backend/snmp.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_STATIC_LIBRARIES += libbackend
 LOCAL_MODULE := snmp
 LOCAL_MODULE_TAGS := optional
@@ -716,8 +715,8 @@ include $(BUILD_EXECUTABLE)
 # socket
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= backend/socket.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups
-LOCAL_SHARED_LIBRARIES += libcups
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libssl libcrypto
 LOCAL_STATIC_LIBRARIES += libbackend
 LOCAL_MODULE := socket
 LOCAL_MODULE_TAGS := optional
@@ -726,8 +725,8 @@ include $(BUILD_EXECUTABLE)
 # usb
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES:= backend/usb.c
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../libusb
-LOCAL_SHARED_LIBRARIES += libcups libusb1.0
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/cups $(LOCAL_PATH)/../libusb $(LOCAL_PATH)/../openssl/include
+LOCAL_SHARED_LIBRARIES += libcups libusb1.0 libssl libcrypto
 LOCAL_STATIC_LIBRARIES += libbackend
 LOCAL_MODULE := usb
 LOCAL_MODULE_TAGS := optional
