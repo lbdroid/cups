@@ -19,6 +19,9 @@
 
 #include <pwd.h>
 
+#if defined(ANDROID) || defined(__ANDROID__)
+# define endpwent() ((void)0)
+#endif
 
 /*
  * HTTP authorization types and levels...
